@@ -27,6 +27,9 @@ const Navbar = (props: Props) => {
                 <Link
                 to="/"
                 onClick={() => setSelected("dashboard")}
+                style={{
+                    coloe: selected === "dashboard" ? "inherit" : palette.grey[700],
+                }}
                 >
                     dashboard
                 </Link>
