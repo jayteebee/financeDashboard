@@ -13,9 +13,27 @@ const Navbar = (props: Props) => {
 
   return (
     <FlexBetween mb="0.25rem" p="0.5rem 0rem" color={palette.grey[300]}>
+        {/**LEFT SIDE */}
         <FlexBetween gap="0.75rem">
             <PixIcon sx={{fontSize: "28px"}} />
+            <Typography variant="h4" fontSize="16px">
+                Finanseer
+            </Typography>
         </FlexBetween>
+
+        {/**RIGHT SIDE */}
+        <FlexBetween gap="2rem">
+            <Box sx={{"&:hover": {color: palette.primary[100]}}} >
+                <Link
+                to="/"
+                onClick={() => setSelected("dashboard")}
+                >
+                    dashboard
+                </Link>
+            </Box>
+            <Box></Box>
+        </FlexBetween>
+
     </FlexBetween>
   )
 }
