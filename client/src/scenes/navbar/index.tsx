@@ -44,7 +44,7 @@ const Navbar = (props: Props) => {
                     textDecoration: "inherit"
                 }}
                 >
-                    dashboard
+                    predictions
                 </Link>
             </Box>
         </FlexBetween>
