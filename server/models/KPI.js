@@ -8,6 +8,8 @@ const KPISchema = new Schema(
     {
         totalProfit: {
             type: mongoose.Types.Currency,
+            currency: "USD",
+            get: (v) => v / 100
         }
     }
 )
