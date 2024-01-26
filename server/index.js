@@ -19,6 +19,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cors())
 
+// Routes
+app.use("/kpi", kpiroutes)
+
 // MONGOOSE SETUP
 
 const PORT = process.env.PORT || 9000;
