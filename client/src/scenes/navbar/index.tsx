@@ -28,7 +28,8 @@ const Navbar = (props: Props) => {
                 to="/"
                 onClick={() => setSelected("dashboard")}
                 style={{
-                    coloe: selected === "dashboard" ? "inherit" : palette.grey[700],
+                    color: selected === "dashboard" ? "inherit" : palette.grey[700],
+                    textDecoration: "inherit"
                 }}
                 >
                     dashboard
