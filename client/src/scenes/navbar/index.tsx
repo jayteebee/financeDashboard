@@ -9,7 +9,7 @@ type Props = {}
 const Navbar = (props: Props) => {
     const {palette} = useTheme()
   return (
-    <FlexBetween mb="0.25rem" p="0.5rem 0rem">
+    <FlexBetween mb="0.25rem" p="0.5rem 0rem" color={palette.grey[300]}>
         
     </FlexBetween>
   )
