@@ -1,5 +1,6 @@
 import DashboardBox from '@/components/DashboardBox'
 import { Box, useMediaQuery, useTheme } from '@mui/material'
+import Row1 from './Row1'
 
 type Props = {}
 
@@ -68,9 +69,7 @@ const Dashboard = (props: Props) => {
     }
     >
 
-        <DashboardBox gridArea="a"></DashboardBox>
-        <DashboardBox gridArea="b"></DashboardBox>
-        <DashboardBox gridArea="c"></DashboardBox>
+        <Row1 />
         <DashboardBox gridArea="d"></DashboardBox>
         <DashboardBox gridArea="e"></DashboardBox>
         <DashboardBox gridArea="f"></DashboardBox>
