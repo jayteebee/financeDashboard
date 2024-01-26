@@ -8,7 +8,7 @@ import morgan from "morgan"
 
 // CONFIGURATIONS
 
-dotenv.congif()
+dotenv.config()
 const app = express()
 app.use(express.json())
 app.use(helmet())
@@ -17,3 +17,6 @@ app.use(morgan("common"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cors())
+
+// MONGOOSE SETUP
+
