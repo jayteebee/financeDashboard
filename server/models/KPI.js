@@ -56,7 +56,7 @@ const KPISchema = new Schema(
                 get: (v) => v / 100
             }
         },
-        monthlyData: []
+        monthlyData: [monthSchema]
 
     }
 )
