@@ -147,6 +147,7 @@ const Row2 = () => {
       </DashboardBox>
 
       <DashboardBox gridArea="f">
+        <BoxHeader title="Product Prices vs Expenses" sideText="+4%" />
       <ResponsiveContainer width="100%" height={400}>
         <ScatterChart
           margin={{
@@ -156,8 +157,8 @@ const Row2 = () => {
             left: 20,
           }}
         >
-          <CartesianGrid />
-          <XAxis type="number" dataKey="x" name="stature" unit="cm" />
+          <CartesianGrid stroke={palette.grey[800]} />
+          <XAxis type="number" dataKey="price" name="price" axisLine={false} tickLine={false} style={{fontSize: "10px"}} tickFormatter={(v) => `$${v}`} />
           <YAxis type="number" dataKey="y" name="weight" unit="kg" />
           <Tooltip cursor={{ strokeDasharray: '3 3' }} />
           <Scatter name="A school" data={data} fill="#8884d8" />
