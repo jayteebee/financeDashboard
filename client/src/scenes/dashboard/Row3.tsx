@@ -1,79 +1,83 @@
-import BoxHeader from '@/components/BoxHeader'
-import DashboardBox from '@/components/DashboardBox'
-import FlexBetween from '@/components/FlexBetween'
-import { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } from '@/state/api'
-import { Box, Typography, useTheme } from '@mui/material'
-import { DataGrid, GridCellParams } from '@mui/x-data-grid'
-import React from 'react'
-import { Cell, Pie, PieChart } from 'recharts'
-
+import BoxHeader from "@/components/BoxHeader";
+import DashboardBox from "@/components/DashboardBox";
+import FlexBetween from "@/components/FlexBetween";
+import {
+  useGetKpisQuery,
+  useGetProductsQuery,
+  useGetTransactionsQuery,
+} from "@/state/api";
+import { Box, Typography, useTheme } from "@mui/material";
+import { DataGrid, GridCellParams } from "@mui/x-data-grid";
+import React from "react";
+import { Cell, Pie, PieChart } from "recharts";
 
 const Row3 = () => {
-  const {data: kpiData} = useGetKpisQuery()
-  const {data: productData} = useGetProductsQuery()
-  const {data: transactionData} = useGetTransactionsQuery()
+  const { data: kpiData } = useGetKpisQuery();
+  const { data: productData } = useGetProductsQuery();
+  const { data: transactionData } = useGetTransactionsQuery();
   const { palette } = useTheme();
 
   const productColumns = [
-    { 
-      field: '_id',
-      headerName: 'id',
-      flex: 1
+    {
+      field: "_id",
+      headerName: "id",
+      flex: 1,
     },
-    { 
-      field: 'expense',
-      headerName: 'Expense',
+    {
+      field: "expense",
+      headerName: "Expense",
       flex: 0.5,
-      renderCell: (params: GridCellParams) => `$${params.value}`
+      renderCell: (params: GridCellParams) => `$${params.value}`,
     },
-    { 
-      field: 'price',
-      headerName: 'Price',
+    {
+      field: "price",
+      headerName: "Price",
       flex: 0.5,
-      renderCell: (params: GridCellParams) => `$${params.value}`
+      renderCell: (params: GridCellParams) => `$${params.value}`,
     },
-  ]
+  ];
 
   const transactionColumns = [
-    { 
-      field: '_id',
-      headerName: 'id',
-      flex: 1
+    {
+      field: "_id",
+      headerName: "id",
+      flex: 1,
     },
-    { 
-      field: 'buyer',
-      headerName: 'Buyer',
+    {
+      field: "buyer",
+      headerName: "Buyer",
       flex: 0.67,
     },
-    { 
-      field: 'amount',
-      headerName: 'Amount',
+    {
+      field: "amount",
+      headerName: "Amount",
       flex: 0.35,
-      renderCell: (params: GridCellParams) => `$${params.value}`
+      renderCell: (params: GridCellParams) => `$${params.value}`,
     },
-    { 
-      field: 'productIds',
-      headerName: 'Count',
+    {
+      field: "productIds",
+      headerName: "Count",
       flex: 0.1,
-      renderCell: (params: GridCellParams) => (params.value as Array<string>).length
+      renderCell: (params: GridCellParams) =>
+        (params.value as Array<string>).length,
     },
-  ]
+  ];
 
   return (
     <>
-        <DashboardBox gridArea="g">
-          <BoxHeader
+      <DashboardBox gridArea="g">
+        <BoxHeader
           title="List of Products"
           sideText={`${productData?.length} products`}
-          />
-          <Box
+        />
+        <Box
           mt="0.5rem"
           p="0 0.5rem"
           height="75%"
           sx={{
             "& .MuiDataGrid-root": {
               color: palette.grey[300],
-              border: "none"
+              border: "none",
             },
             "& .MuiDataGrid-cell": {
               borderBottom: `1px solid ${palette.grey[800]} !important`,
@@ -83,32 +87,32 @@ const Row3 = () => {
             },
             "& .MuiDataGrid-columnSeparator": {
               visibility: "hidden",
-            }
+            },
           }}
-          >
+        >
           <DataGrid
-          columnHeaderHeight={25}
-          rowHeight={35}
-          hideFooter={true}
-          rows={productData || []}
-          columns={productColumns}
+            columnHeaderHeight={25}
+            rowHeight={35}
+            hideFooter={true}
+            rows={productData || []}
+            columns={productColumns}
           />
-          </Box>
-        </DashboardBox>
+        </Box>
+      </DashboardBox>
 
-        <DashboardBox gridArea="h">
+      <DashboardBox gridArea="h">
         <BoxHeader
           title="Recent Orders"
           sideText={`${transactionData?.length} latest transactions`}
-          />
-          <Box
+        />
+        <Box
           mt="1rem"
           p="0 0.5rem"
           height="80%"
           sx={{
             "& .MuiDataGrid-root": {
               color: palette.grey[300],
-              border: "none"
+              border: "none",
             },
             "& .MuiDataGrid-cell": {
               borderBottom: `1px solid ${palette.grey[800]} !important`,
@@ -118,52 +122,46 @@ const Row3 = () => {
             },
             "& .MuiDataGrid-columnSeparator": {
               visibility: "hidden",
-            }
+            },
           }}
-          >
+        >
           <DataGrid
-          columnHeaderHeight={25}
-          rowHeight={35}
-          hideFooter={true}
-          rows={transactionData || []}
-          columns={transactionColumns}
+            columnHeaderHeight={25}
+            rowHeight={35}
+            hideFooter={true}
+            rows={transactionData || []}
+            columns={transactionColumns}
           />
-          </Box>
-        </DashboardBox>
+        </Box>
+      </DashboardBox>
 
-        <DashboardBox gridArea="i">
-          <BoxHeader title="Expense breakdown by Category" sideText="+4%" />
-          <FlexBetween mt="0.5rem" gap="0.5rem" p="0 1rem" textAlign="center">
-            {pieChartData?.map((data, i) => (
+      <DashboardBox gridArea="i">
+        <BoxHeader title="Expense breakdown by Category" sideText="+4%" />
+        <FlexBetween mt="0.5rem" gap="0.5rem" p="0 1rem" textAlign="center">
+          {pieChartData?.map((data, i) => (
             <Box>
-        <PieChart
-            width={110}
-            height={100}
-          >
-            <Pie
-              data={pieData}
-              innerRadius={18}
-              outerRadius={35}
-              paddingAngle={2}
-              dataKey="value"
-            >
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={pieColors[index]} />
-              ))}
-            </Pie>
-          </PieChart>
-                <Typography variant="h5">{data[0].name}</Typography>
+              <PieChart width={110} height={100}>
+                <Pie
+                  data={pieData}
+                  innerRadius={18}
+                  outerRadius={35}
+                  paddingAngle={2}
+                  dataKey="value"
+                >
+                  {data.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={pieColors[index]} />
+                  ))}
+                </Pie>
+              </PieChart>
+              <Typography variant="h5">{data[0].name}</Typography>
             </Box>
+          ))}
+        </FlexBetween>
+      </DashboardBox>
 
-            ))}
-          </FlexBetween>
-
-         
-        </DashboardBox>
-
-        <DashboardBox gridArea="j"></DashboardBox>
+      <DashboardBox gridArea="j"></DashboardBox>
     </>
-  )
-}
+  );
+};
 
-export default Row3
+export default Row3;
