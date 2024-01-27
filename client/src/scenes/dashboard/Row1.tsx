@@ -39,11 +39,17 @@ const Row1 = (props: Props) => {
             bottom: 0,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
+          <defs>
+            <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor={palette.primary[300]} stopOpacity={0.5}/>
+            </linearGradient>
+          </defs>
+          <XAxis dataKey="name" tickLine={false} style={{fontSize: "10px"}} />
+          <YAxis tickLine={false} style={{fontSize: "10px"}} axisLine={{strokeWidth: "0"}} domain={[8000, 23000]} />
           <Tooltip />
-          <Area type="monotone" dataKey="revenue" stroke={palette.primary.main} fillOpacity={1} fill="url(colorRevenue)" />
+          <Area type="monotone" dataKey="revenue" dot={true} stroke={palette.primary.main} fillOpacity={1} fill="url(colorRevenue)" />
+          <Area type="monotone" dataKey="expenses" dot={true} stroke={palette.primary.main} fillOpacity={1} fill="url(colorExpenses)" />
+          
         </AreaChart>
       </ResponsiveContainer>
         </DashboardBox>
