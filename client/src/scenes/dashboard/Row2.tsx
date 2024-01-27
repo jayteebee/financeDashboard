@@ -1,35 +1,44 @@
-import BoxHeader from '@/components/BoxHeader'
-import DashboardBox from '@/components/DashboardBox'
-import { useGetKpisQuery, useGetProductsQuery } from '@/state/api'
-import { useTheme } from '@mui/material'
-import React, { useMemo } from 'react'
-import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts'
+import BoxHeader from "@/components/BoxHeader";
+import DashboardBox from "@/components/DashboardBox";
+import { useGetKpisQuery, useGetProductsQuery } from "@/state/api";
+import { useTheme } from "@mui/material";
+import React, { useMemo } from "react";
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
 
-type Props = {}
+type Props = {};
 
 const Row2 = (props: Props) => {
-  const {data: productData} = useGetProductsQuery()
-  const {data: operationalData} = useGetKpisQuery()
+  const { data: productData } = useGetProductsQuery();
+  const { data: operationalData } = useGetKpisQuery();
 
   const { palette } = useTheme();
 
   const operationalExpenses = useMemo(() => {
     return (
       operationalData &&
-      operationalData[0].monthlyData.map(({ month, operationalExpenses, nonOperationalExpenses }) => {
-        return {
-          name: month.substring(0, 3),
-          "Operational Expenses": operationalExpenses,
-          "Non Operational Expenses": nonOperationalExpenses,
-
-        };
-      })
+      operationalData[0].monthlyData.map(
+        ({ month, operationalExpenses, nonOperationalExpenses }) => {
+          return {
+            name: month.substring(0, 3),
+            "Operational Expenses": operationalExpenses,
+            "Non Operational Expenses": nonOperationalExpenses,
+          };
+        }
+      )
     );
   }, [operationalData]);
 
   return (
     <>
-              <DashboardBox gridArea="d">
+      <DashboardBox gridArea="d">
         <BoxHeader
           title="Operational Vs Non-Operational Expenses"
           sideText="+4%"
@@ -52,7 +61,7 @@ const Row2 = (props: Props) => {
             />
             <YAxis
               yAxisId="left"
-              orientation='left'
+              orientation="left"
               tickLine={false}
               style={{ fontSize: "10px" }}
               axisLine={false}
@@ -81,10 +90,10 @@ const Row2 = (props: Props) => {
           </LineChart>
         </ResponsiveContainer>
       </DashboardBox>
-        <DashboardBox gridArea="e"></DashboardBox>
-        <DashboardBox gridArea="f"></DashboardBox>
+      <DashboardBox gridArea="e"></DashboardBox>
+      <DashboardBox gridArea="f"></DashboardBox>
     </>
-  )
-}
+  );
+};
 
-export default Row2
+export default Row2;
