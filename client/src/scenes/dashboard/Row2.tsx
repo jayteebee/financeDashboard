@@ -22,7 +22,6 @@ const pieData = [
   { name: "Group B", value: 400 },
 ];
 
-
 const Row2 = () => {
   const { data: productData } = useGetProductsQuery();
   const { data: operationalData } = useGetKpisQuery();
@@ -101,41 +100,37 @@ const Row2 = () => {
 
       <DashboardBox gridArea="e">
         <BoxHeader title="Campaigns and Targets" sideText="+4%" />
-        <FlexBetween mt="0.25rem" gap="1.5rem" pr="1rem" >
-      <PieChart 
-      width={110} 
-      height={100}
-      margin={{
-        top: 0,
-        right: -10,
-        left: 10,
-        bottom: 0,
-      }}
-      >
-        <Pie
-          data={pieData}
-          innerRadius={18}
-          outerRadius={38}
-          paddingAngle={2}
-          dataKey="value"
-        >
-          {pieData.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={pieColors[index]} />
-          ))}
-        </Pie>
-      </PieChart>
-      <Box ml="-0.7rem" flexBasis="40%" textAlign="center" >
-            <Typography variant="h5" >
-              Target Sales
-            </Typography>
-            <Typography variant="h3" color={palette.primary[300]} m="0.3rem 0" >
+        <FlexBetween mt="0.25rem" gap="1.5rem" pr="1rem">
+          <PieChart
+            width={110}
+            height={100}
+            margin={{
+              top: 0,
+              right: -10,
+              left: 10,
+              bottom: 0,
+            }}
+          >
+            <Pie
+              data={pieData}
+              innerRadius={18}
+              outerRadius={38}
+              paddingAngle={2}
+              dataKey="value"
+            >
+              {pieData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={pieColors[index]} />
+              ))}
+            </Pie>
+          </PieChart>
+          <Box ml="-0.7rem" flexBasis="40%" textAlign="center">
+            <Typography variant="h5">Target Sales</Typography>
+            <Typography variant="h3" color={palette.primary[300]} m="0.3rem 0">
               83
             </Typography>
-            <Typography variant="h6">
-              Finance goals of the Campaign 
-            </Typography>
-      </Box>
-      </FlexBetween>
+            <Typography variant="h6">Finance goals of the Campaign</Typography>
+          </Box>
+        </FlexBetween>
       </DashboardBox>
 
       <DashboardBox gridArea="f"></DashboardBox>
