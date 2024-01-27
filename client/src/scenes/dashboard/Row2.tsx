@@ -16,13 +16,12 @@ import {
   Cell,
 } from "recharts";
 
-type Props = {};
 
-const Row2 = (props: Props) => {
+const Row2 = () => {
   const { data: productData } = useGetProductsQuery();
   const { data: operationalData } = useGetKpisQuery();
-
   const { palette } = useTheme();
+  const pieColors = [palette.primary[800], palette.primary[300]];
 
   const operationalExpenses = useMemo(() => {
     return (
