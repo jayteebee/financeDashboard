@@ -19,6 +19,12 @@ const Row3 = (props: Props) => {
       headerName: 'id',
       flex: 1
     },
+    { 
+      field: 'expense',
+      headerName: 'Expense',
+      flex: 0.5,
+      renderCell: (params) => `$${params.value}`
+    },
   ]
 
   return (
