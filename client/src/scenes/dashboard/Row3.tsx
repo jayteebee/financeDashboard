@@ -190,9 +190,9 @@ const pieChartData = useMemo(() => {
           width="40%"
           bgcolor={palette.primary[600]}
           >
-
           </Box>
         </Box>
+        <Typography variant="h6" margin="0 1rem">Placeholder Text</Typography>
       </DashboardBox>
     </>
   );
