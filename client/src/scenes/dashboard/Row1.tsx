@@ -1,6 +1,6 @@
 import DashboardBox from '@/components/DashboardBox'
 import { useGetKpisQuery } from '@/state/api'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 
 type Props = {}
@@ -10,6 +10,18 @@ const Row1 = (props: Props) => {
     const {data} = useGetKpisQuery()
     console.log("🚀 ~ Row1 ~ data:", data)
 
+  const revenueExpenses = useMemo(() => {
+    return (
+      data && 
+      data[0].monthlyData.map(({month, revenue, expenses}) => {
+        return {
+          name: month.substring(0, 3),
+          revenue: revenue,
+          expenses: expenses,
+        }
+      } )
+    )
+  }, [data])
 
   return (
     <>
@@ -34,6 +46,7 @@ const Row1 = (props: Props) => {
         </AreaChart>
       </ResponsiveContainer>
         </DashboardBox>
+
         <DashboardBox gridArea="b"></DashboardBox>
         <DashboardBox gridArea="c"></DashboardBox>
     </>
