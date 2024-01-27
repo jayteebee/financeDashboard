@@ -8,7 +8,7 @@ import {
 } from "@/state/api";
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
-import React from "react";
+import React, { useMemo } from "react";
 import { Cell, Pie, PieChart } from "recharts";
 
 const Row3 = () => {
@@ -16,6 +16,20 @@ const Row3 = () => {
   const { data: productData } = useGetProductsQuery();
   const { data: transactionData } = useGetTransactionsQuery();
   const { palette } = useTheme();
+
+const pieChartData = useMemo(() => {
+  if (kpiData) {
+    const totalExpenses = kpiData[0].totalExpenses;
+    return Object.entries(kpiData[0].expensesByCategory).map(
+      ([key, value]) => {
+        return [
+          { name: key, value: value },
+          { name: `${key} of Total`, value: totalExpenses - value },
+        ]
+      }
+      );
+  }
+}, [kpiData])
 
   const productColumns = [
     {
@@ -139,10 +153,12 @@ const Row3 = () => {
         <BoxHeader title="Expense breakdown by Category" sideText="+4%" />
         <FlexBetween mt="0.5rem" gap="0.5rem" p="0 1rem" textAlign="center">
           {pieChartData?.map((data, i) => (
-            <Box>
+            <Box
+            key={`${data[0].name}-${i}`}
+            >
               <PieChart width={110} height={100}>
                 <Pie
-                  data={pieData}
+                  data={data}
                   innerRadius={18}
                   outerRadius={35}
                   paddingAngle={2}
