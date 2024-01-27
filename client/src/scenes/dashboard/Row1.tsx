@@ -204,7 +204,7 @@ const Row1 = (props: Props) => {
             bottom: 58,
           }}
         >
-          <CartesianGrid vertical={false} />
+          <CartesianGrid vertical={false} stroke={palette.grey[800]} />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
