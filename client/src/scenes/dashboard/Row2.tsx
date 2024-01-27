@@ -16,8 +16,7 @@ const Row2 = (props: Props) => {
     <>
               <DashboardBox gridArea="d">
         <BoxHeader
-          title="Profit and Revenue"
-          subtitle="Top line represents revenue, bottom line represents expenses"
+          title="Operational Vs Non-Operational Expenses"
           sideText="+4%"
         />
         <ResponsiveContainer width="100%" height="100%">
@@ -58,13 +57,13 @@ const Row2 = (props: Props) => {
             <Line
               yAxisId="left"
               type="monotone"
-              dataKey="profit"
+              dataKey="Non Operational Expenses"
               stroke={palette.tertiary[500]}
             />
             <Line
               yAxisId="right"
               type="monotone"
-              dataKey="revenue"
+              dataKey="Operational Expenses"
               stroke={palette.primary.main}
             />
           </LineChart>
