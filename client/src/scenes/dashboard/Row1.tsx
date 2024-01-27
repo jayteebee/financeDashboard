@@ -42,7 +42,7 @@ const Row1 = (props: Props) => {
         return {
           name: month.substring(0, 3),
           revenue: revenue,
-          profit: revenue - expenses,
+          profit: (revenue - expenses).toFixed(2),
         };
       })
     );
