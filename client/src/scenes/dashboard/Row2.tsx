@@ -133,37 +133,45 @@ const Row2 = () => {
             <Typography variant="h6">Finance goals of the Campaign</Typography>
           </Box>
 
-          <Box  flexBasis="40%" >
+          <Box flexBasis="40%">
             <Typography variant="h5">Losses in Revenue</Typography>
-            <Typography variant="h6" >
-              Losses are down 25%
+            <Typography variant="h6">Losses are down 25%</Typography>
+            <Typography mt="0.4rem" variant="h5">
+              Profit Margins
             </Typography>
-            <Typography mt="0.4rem" variant="h5">Profit Margins</Typography>
-            <Typography  variant="h6">Margins are up by 30% from last month.</Typography>
-
+            <Typography variant="h6">
+              Margins are up by 30% from last month.
+            </Typography>
           </Box>
-
         </FlexBetween>
       </DashboardBox>
 
       <DashboardBox gridArea="f">
         <BoxHeader title="Product Prices vs Expenses" sideText="+4%" />
-      <ResponsiveContainer width="100%" height={400}>
-        <ScatterChart
-          margin={{
-            top: 20,
-            right: 20,
-            bottom: 20,
-            left: 20,
-          }}
-        >
-          <CartesianGrid stroke={palette.grey[800]} />
-          <XAxis type="number" dataKey="price" name="price" axisLine={false} tickLine={false} style={{fontSize: "10px"}} tickFormatter={(v) => `$${v}`} />
-          <YAxis type="number" dataKey="y" name="weight" unit="kg" />
-          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-          <Scatter name="A school" data={data} fill="#8884d8" />
-        </ScatterChart>
-      </ResponsiveContainer>
+        <ResponsiveContainer width="100%" height={400}>
+          <ScatterChart
+            margin={{
+              top: 20,
+              right: 20,
+              bottom: 20,
+              left: 20,
+            }}
+          >
+            <CartesianGrid stroke={palette.grey[800]} />
+            <XAxis
+              type="number"
+              dataKey="price"
+              name="price"
+              axisLine={false}
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+              tickFormatter={(v) => `$${v}`}
+            />
+            <YAxis type="number" dataKey="y" name="weight" unit="kg" />
+            <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+            <Scatter name="A school" data={data} fill="#8884d8" />
+          </ScatterChart>
+        </ResponsiveContainer>
       </DashboardBox>
     </>
   );
