@@ -9,6 +9,7 @@ import kpiroutes from "./routes/kpi.js"
 import KPI from "./models/KPI.js"
 import { kpis } from "./data/data.js"
 import productRoutes from "./routes/product.js"
+import Product from "./models/Product.js"
 
 // CONFIGURATIONS
 
