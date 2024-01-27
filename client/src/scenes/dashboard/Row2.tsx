@@ -167,7 +167,15 @@ const Row2 = () => {
               style={{ fontSize: "10px" }}
               tickFormatter={(v) => `$${v}`}
             />
-            <YAxis type="number" dataKey="y" name="weight" unit="kg" />
+            <YAxis
+              type="number"
+              dataKey="expense"
+              name="expense"
+              axisLine={false}
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+              tickFormatter={(v) => `$${v}`}
+            />
             <Tooltip cursor={{ strokeDasharray: "3 3" }} />
             <Scatter name="A school" data={data} fill="#8884d8" />
           </ScatterChart>
