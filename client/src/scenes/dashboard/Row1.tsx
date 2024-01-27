@@ -197,12 +197,12 @@ const Row1 = () => {
       </DashboardBox>
 
       <DashboardBox gridArea="c">
-      <ResponsiveContainer width="100%" height="100%">
       <BoxHeader
           title="Revenue Month By Month"
           subtitle="Graph representing the revenue month by month"
           sideText="+4%"
         />
+      <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={500}
           height={300}
