@@ -36,9 +36,9 @@ const Row1 = (props: Props) => {
     <>
       <DashboardBox gridArea="a">
         <BoxHeader
-        title="Revenue and Expenses"
-        subtitle="Top line represents revenue, bottom line represents expenses"
-        sideText="+4%"
+          title="Revenue and Expenses"
+          subtitle="Top line represents revenue, bottom line represents expenses"
+          sideText="+4%"
         />
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
@@ -111,10 +111,10 @@ const Row1 = (props: Props) => {
       </DashboardBox>
 
       <DashboardBox gridArea="b">
-      <BoxHeader
-        title="Revenue and Expenses"
-        subtitle="Top line represents revenue, bottom line represents expenses"
-        sideText="+4%"
+        <BoxHeader
+          title="Revenue and Expenses"
+          subtitle="Top line represents revenue, bottom line represents expenses"
+          sideText="+4%"
         />
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
@@ -160,14 +160,14 @@ const Row1 = (props: Props) => {
               style={{ fontSize: "10px" }}
             />
             <YAxis
-            yAxisId="left"
+              yAxisId="left"
               tickLine={false}
               style={{ fontSize: "10px" }}
               axisLine={false}
             />
-                        <YAxis
-            yAxisId="right"
-            orientation="right"
+            <YAxis
+              yAxisId="right"
+              orientation="right"
               tickLine={false}
               style={{ fontSize: "10px" }}
               axisLine={false}
