@@ -25,7 +25,7 @@ const Row2 = (props: Props) => {
         };
       })
     );
-  }, [data]);
+  }, [operationalData]);
 
   return (
     <>
