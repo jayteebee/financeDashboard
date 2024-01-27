@@ -6,10 +6,13 @@ import React, { useMemo } from "react";
 import {
   Area,
   AreaChart,
+  Bar,
+  BarChart,
   CartesianGrid,
   Legend,
   Line,
   LineChart,
+  Rectangle,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -182,7 +185,35 @@ const Row1 = (props: Props) => {
           </LineChart>
         </ResponsiveContainer>
       </DashboardBox>
-      <DashboardBox gridArea="c"></DashboardBox>
+
+      <DashboardBox gridArea="c">
+      <ResponsiveContainer width="100%" height="100%">
+      <BoxHeader
+          title="Revenue Month By Month"
+          subtitle="Graph representing the revenue month by month"
+          sideText="+4%"
+        />
+        <BarChart
+          width={500}
+          height={300}
+          data={revenue}
+          margin={{
+            top: 17,
+            right: 15,
+            left: -5,
+            bottom: 58,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="pv" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
+          <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
+        </BarChart>
+      </ResponsiveContainer>
+      </DashboardBox>
     </>
   );
 };
