@@ -5,7 +5,7 @@ import { themeSettings } from "./theme"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Navbar from "@/scenes/navbar"
 import Dashboard from "@/scenes/dashboard"
-import Predictions from
+import Predictions from "@/scenes/predictions"
 
 function App() {
 const theme = useMemo(() => createTheme(themeSettings), [])
