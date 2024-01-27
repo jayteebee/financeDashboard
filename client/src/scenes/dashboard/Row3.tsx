@@ -53,6 +53,9 @@ const Row3 = () => {
             },
             "& .MuiDataGrid-columnHeaders": {
               borderBottom: `1px solid ${palette.grey[800]} !important`,
+            },
+            "& .MuiDataGrid-columnSeparator": {
+              visibility: "hidden",
             }
           }}
           >
