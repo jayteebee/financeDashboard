@@ -31,12 +31,15 @@ const Row3 = (props: Props) => {
               border: "none"
             },
             "& .MuiDataGrid-cell": {
-              
+
             }
 
           }}
           >
-          <DataGrid />
+          <DataGrid
+          rows={productData || []}
+          columns={productColumns}
+          />
           </Box>
         </DashboardBox>
 
