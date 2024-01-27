@@ -205,12 +205,10 @@ const Row1 = (props: Props) => {
           }}
         >
           <CartesianGrid vertical={false} stroke={palette.grey[800]} />
-          <XAxis dataKey="name" />
-          <YAxis />
+          <XAxis dataKey="name" axisLine={false} tickLine={false} style={{fontSize: "10px" }} />
+          <YAxis axisLine={false} tickLine={false} style={{fontSize: "10px" }} />
           <Tooltip />
-          <Legend />
-          <Bar dataKey="pv" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-          <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
+          <Bar dataKey="revenue" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
         </BarChart>
       </ResponsiveContainer>
       </DashboardBox>
