@@ -39,6 +39,7 @@ const Row2 = (props: Props) => {
             />
             <YAxis
               yAxisId="left"
+              orientation='left'
               tickLine={false}
               style={{ fontSize: "10px" }}
               axisLine={false}
@@ -51,9 +52,7 @@ const Row2 = (props: Props) => {
               axisLine={false}
             />
             <Tooltip />
-            <Legend height={20} wrapperStyle={{
-              margin: "0 0 10px 0"
-            }} />
+
             <Line
               yAxisId="left"
               type="monotone"
