@@ -1,7 +1,8 @@
 import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
+import FlexBetween from "@/components/FlexBetween";
 import { useGetKpisQuery, useGetProductsQuery } from "@/state/api";
-import { useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import React, { useMemo } from "react";
 import {
   CartesianGrid,
@@ -99,6 +100,8 @@ const Row2 = () => {
       </DashboardBox>
 
       <DashboardBox gridArea="e">
+        <BoxHeader title="Campaigns and Targets" sideText="+4%" />
+        <FlexBetween mt="0.25rem" gap="1.5rem" pr="1rem" >
       <PieChart 
       width={110} 
       height={100}
@@ -121,7 +124,12 @@ const Row2 = () => {
           ))}
         </Pie>
       </PieChart>
+      <Box ml="-0.7rem" flexBasis="40%" >
+
+      </Box>
+      </FlexBetween>
       </DashboardBox>
+
       <DashboardBox gridArea="f"></DashboardBox>
     </>
   );
