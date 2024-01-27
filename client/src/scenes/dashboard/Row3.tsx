@@ -1,9 +1,11 @@
 import BoxHeader from '@/components/BoxHeader'
 import DashboardBox from '@/components/DashboardBox'
+import FlexBetween from '@/components/FlexBetween'
 import { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } from '@/state/api'
-import { Box, useTheme } from '@mui/material'
+import { Box, Typography, useTheme } from '@mui/material'
 import { DataGrid, GridCellParams } from '@mui/x-data-grid'
 import React from 'react'
+import { Cell, Pie, PieChart } from 'recharts'
 
 
 const Row3 = () => {
@@ -129,7 +131,35 @@ const Row3 = () => {
           </Box>
         </DashboardBox>
 
-        <DashboardBox gridArea="i"></DashboardBox>
+        <DashboardBox gridArea="i">
+          <BoxHeader title="Expense breakdown by Category" sideText="+4%" />
+          <FlexBetween mt="0.5rem" gap="0.5rem" p="0 1rem" textAlign="center">
+            {pieChartData?.map((data, i) => (
+            <Box>
+        <PieChart
+            width={110}
+            height={100}
+          >
+            <Pie
+              data={pieData}
+              innerRadius={18}
+              outerRadius={35}
+              paddingAngle={2}
+              dataKey="value"
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={pieColors[index]} />
+              ))}
+            </Pie>
+          </PieChart>
+                <Typography variant="h5">{data[0].name}</Typography>
+            </Box>
+
+            ))}
+          </FlexBetween>
+
+         
+        </DashboardBox>
 
         <DashboardBox gridArea="j"></DashboardBox>
     </>
