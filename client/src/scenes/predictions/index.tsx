@@ -3,6 +3,7 @@ import FlexBetween from '@/components/FlexBetween'
 import { useGetKpisQuery } from '@/state/api'
 import { Box, Button, Typography, useTheme } from '@mui/material'
 import React, { useState } from 'react'
+import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip, Label } from 'recharts'
 
 type Props = {}
 
@@ -35,6 +36,61 @@ const Predictions = (props: Props) => {
                 Show Predicted Revenue for Next Year
             </Button>
         </FlexBetween>
+
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart
+            data={formattedData}
+            margin={{
+              top: 20,
+              right: 75,
+              left: 20,
+              bottom: 80,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" stroke={palette.grey[800]} />
+            <XAxis
+              dataKey="name"
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+            >
+                <Label
+                    value="Month"
+                    offset={-5}
+                    position="insideBottom"
+                />
+            </XAxis>
+            <YAxis
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+              axisLine={false}
+            >
+                <Label
+                    value="Revenue in USD"
+                    angle={-90}
+                    position="insideLeft"
+                    offset={-5}
+                />
+            </YAxis>
+
+            <Tooltip />
+            <Legend
+             verticalAlign='top'
+            />
+            <Line
+              yAxisId="left"
+              type="monotone"
+              dataKey="profit"
+              stroke={palette.tertiary[500]}
+            />
+            <Line
+              yAxisId="right"
+              type="monotone"
+              dataKey="revenue"
+              stroke={palette.primary.main}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+
     </DashboardBox>
   )
 }
