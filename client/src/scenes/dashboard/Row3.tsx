@@ -24,6 +24,12 @@ const Row3 = () => {
       flex: 0.5,
       renderCell: (params: GridCellParams) => `$${params.value}`
     },
+    { 
+      field: 'price',
+      headerName: 'Price',
+      flex: 0.5,
+      renderCell: (params: GridCellParams) => `$${params.value}`
+    },
   ]
 
   return (
