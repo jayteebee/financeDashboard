@@ -50,11 +50,11 @@ const Row2 = () => {
     return (
       productData &&
       productData.map(
-        ({ _id, price, expenses }) => {
+        ({ _id, price, expense }) => {
           return {
             id: _id,
             price: price,
-            expense: expenses,
+            expense: expense,
           };
         }
       )
