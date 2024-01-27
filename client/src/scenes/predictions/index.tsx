@@ -1,6 +1,7 @@
 import DashboardBox from '@/components/DashboardBox'
+import FlexBetween from '@/components/FlexBetween'
 import { useGetKpisQuery } from '@/state/api'
-import { useTheme } from '@mui/material'
+import { Box, Typography, useTheme } from '@mui/material'
 import React, { useState } from 'react'
 
 type Props = {}
@@ -12,8 +13,19 @@ const Predictions = (props: Props) => {
 
 
   return (
-    <DashboardBox>
-        
+    <DashboardBox
+    width="100%"
+    height="100%"
+    p="1rem"
+    overflow="hidden"
+    >
+        <FlexBetween m="1rem 2.5rem" >
+            <Box>
+                <Typography variant="h3">Revenue and Predictions</Typography>
+                <Typography variant="h6">Charter Revenue and Predicted Revenue based on a liner regression model</Typography>
+
+            </Box>
+        </FlexBetween>
     </DashboardBox>
   )
 }
