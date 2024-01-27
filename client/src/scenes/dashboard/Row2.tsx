@@ -16,6 +16,11 @@ import {
   Cell,
 } from "recharts";
 
+const pieData = [
+  { name: "Group A", value: 600 },
+  { name: "Group B", value: 400 },
+];
+
 
 const Row2 = () => {
   const { data: productData } = useGetProductsQuery();
