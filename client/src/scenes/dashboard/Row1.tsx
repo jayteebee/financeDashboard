@@ -7,6 +7,7 @@ import {
   Area,
   AreaChart,
   CartesianGrid,
+  Legend,
   Line,
   ResponsiveContainer,
   Tooltip,
@@ -149,16 +150,20 @@ const Row1 = (props: Props) => {
               axisLine={false}
             />
             <Tooltip />
+            <Legend height={20} wrapperStyle={{
+              margin: "0 0 10px 0"
+            }} />
             <Line
               yAxisId="left"
+              type="monotone"
+              dataKey="profit"
+              stroke={palette.tertiary[500]}
             />
             <Line
+              yAxisId="right"
               type="monotone"
-              dataKey="expenses"
-              dot={true}
+              dataKey="revenue"
               stroke={palette.primary.main}
-              fillOpacity={1}
-              fill="url(#colorExpenses)"
             />
           </AreaChart>
         </ResponsiveContainer>
