@@ -30,7 +30,7 @@ const Row1 = (props: Props) => {
         <AreaChart
           width={500}
           height={400}
-          data={data}
+          data={revenueExpenses}
           margin={{
             top: 10,
             right: 30,
