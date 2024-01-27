@@ -2,7 +2,7 @@ import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
 import { useGetKpisQuery, useGetProductsQuery } from "@/state/api";
-import { Box, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import React, { useMemo } from "react";
 import {
   CartesianGrid,
@@ -124,8 +124,13 @@ const Row2 = () => {
           ))}
         </Pie>
       </PieChart>
-      <Box ml="-0.7rem" flexBasis="40%" >
+      <Box ml="-0.7rem" flexBasis="40%" textAlign="center" >
+            <Typography variant="h5" >
+              Target Sales
+            </Typography>
+            <Typography variant="h3" color={palette.primary[300]} m="0.3rem 0" >
 
+            </Typography>
       </Box>
       </FlexBetween>
       </DashboardBox>
