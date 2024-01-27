@@ -1,10 +1,11 @@
 import DashboardBox from '@/components/DashboardBox'
-import { useGetProductsQuery, useGetTransactionsQuery } from '@/state/api'
+import { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } from '@/state/api'
 import React from 'react'
 
 type Props = {}
 
 const Row3 = (props: Props) => {
+  const {data: kpiData} = useGetKpisQuery()
   const {data: productData} = useGetProductsQuery()
   const {data: transactionData} = useGetTransactionsQuery()
 
