@@ -60,9 +60,11 @@ const Predictions = (props: Props) => {
                 />
             </XAxis>
             <YAxis
+            domain={[12000,26000]}
               tickLine={false}
               style={{ fontSize: "10px" }}
-              axisLine={false}
+              axisLine={{strokeWidth: "0"}}
+              tickFormatter={(v) => `$${v}`}
             >
                 <Label
                     value="Revenue in USD"
@@ -77,17 +79,25 @@ const Predictions = (props: Props) => {
              verticalAlign='top'
             />
             <Line
-              yAxisId="left"
               type="monotone"
-              dataKey="profit"
-              stroke={palette.tertiary[500]}
+              dataKey="Actual Revenue"
+              stroke={palette.primary.main}
+              strokeWidth={0}
+              dot={{strokeWidth: 5}}
             />
             <Line
-              yAxisId="right"
               type="monotone"
-              dataKey="revenue"
-              stroke={palette.primary.main}
+              dataKey="Regression Line"
+              stroke="#8884d8"
+              dot={false}
             />
+            {isPredictions && (
+                            <Line
+                            type="monotone"
+                            dataKey="Predicted Revenue"
+                            stroke={palette.secondary[500]}
+                          />
+            )}
           </LineChart>
         </ResponsiveContainer>
 
