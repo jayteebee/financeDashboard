@@ -9,6 +9,7 @@ import {
   CartesianGrid,
   Legend,
   Line,
+  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -114,20 +115,20 @@ const Row1 = (props: Props) => {
 
       <DashboardBox gridArea="b">
         <BoxHeader
-          title="Revenue and Expenses"
+          title="Profit and Revenue"
           subtitle="Top line represents revenue, bottom line represents expenses"
           sideText="+4%"
         />
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
+          <LineChart
             width={500}
             height={400}
-            data={revenueExpenses}
+            data={revenueProfit}
             margin={{
-              top: 15,
-              right: 25,
+              top: 20,
+              right: 0,
               left: -10,
-              bottom: 60,
+              bottom: 55,
             }}
           >
             <CartesianGrid vertical={false} stroke={palette.grey[800]} />
@@ -165,7 +166,7 @@ const Row1 = (props: Props) => {
               dataKey="revenue"
               stroke={palette.primary.main}
             />
-          </AreaChart>
+          </LineChart>
         </ResponsiveContainer>
       </DashboardBox>
       <DashboardBox gridArea="c"></DashboardBox>
