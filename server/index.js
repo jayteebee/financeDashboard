@@ -36,5 +36,8 @@ mongoose
     })
     .then( async() => {
         app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
+
+        await mongoose.connection.db.dropDatabase()
+        
     })
     .catch((err) => console.log(`${err} did not connect`))
