@@ -1,12 +1,13 @@
 import DashboardBox from '@/components/DashboardBox'
 import { useGetKpisQuery } from '@/state/api'
+import { useTheme } from '@mui/material'
 import React, { useMemo } from 'react'
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 
 type Props = {}
 
 const Row1 = (props: Props) => {
-
+  const {palette} = useTheme()
     const {data} = useGetKpisQuery()
     console.log("🚀 ~ Row1 ~ data:", data)
 
@@ -42,7 +43,7 @@ const Row1 = (props: Props) => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Area type="monotone" dataKey="revenue" stroke="#8884d8" fill="#8884d8" />
+          <Area type="monotone" dataKey="revenue" stroke={palette.primary.main} fillOpacity={1} fill="url(colorRevenue)" />
         </AreaChart>
       </ResponsiveContainer>
         </DashboardBox>
