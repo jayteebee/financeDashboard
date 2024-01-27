@@ -5,9 +5,8 @@ import { Box, useTheme } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 import React from 'react'
 
-type Props = {}
 
-const Row3 = (props: Props) => {
+const Row3 = () => {
   const {data: kpiData} = useGetKpisQuery()
   const {data: productData} = useGetProductsQuery()
   const {data: transactionData} = useGetTransactionsQuery()
