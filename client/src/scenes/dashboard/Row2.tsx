@@ -46,6 +46,23 @@ const Row2 = () => {
     );
   }, [operationalData]);
 
+  const productExpenseData = useMemo(() => {
+    return (
+      productData &&
+      productData.map(
+        ({ _id, price, expenses }) => {
+          return {
+            id: _id,
+            price: price,
+            expense: expenses,
+          };
+        }
+      )
+    );
+  }, [productData]);
+
+
+
   return (
     <>
       <DashboardBox gridArea="d">
