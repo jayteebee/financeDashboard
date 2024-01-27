@@ -113,7 +113,7 @@ const Row2 = (props: Props) => {
           dataKey="value"
         >
           {pieData.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            <Cell key={`cell-${index}`} fill={pieColors[index]} />
           ))}
         </Pie>
       </PieChart>
