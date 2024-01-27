@@ -10,6 +10,8 @@ import KPI from "./models/KPI.js"
 import { kpis, products } from "./data/data.js"
 import productRoutes from "./routes/product.js"
 import Product from "./models/Product.js"
+import transactionRoutes from "./routes/transaction.js"
+import Transaction from "./models/Transaction.js"
 
 // CONFIGURATIONS
 
@@ -26,6 +28,8 @@ app.use(cors())
 // Routes
 app.use("/kpi", kpiroutes)
 app.use("/product", productRoutes)
+app.use("/transaction", transactionRoutes)
+
 
 // MONGOOSE SETUP
 
