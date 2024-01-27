@@ -42,7 +42,7 @@ const Row1 = (props: Props) => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+          <Area type="monotone" dataKey="revenue" stroke="#8884d8" fill="#8884d8" />
         </AreaChart>
       </ResponsiveContainer>
         </DashboardBox>
