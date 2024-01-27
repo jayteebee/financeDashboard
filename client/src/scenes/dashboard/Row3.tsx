@@ -2,7 +2,7 @@ import BoxHeader from '@/components/BoxHeader'
 import DashboardBox from '@/components/DashboardBox'
 import { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } from '@/state/api'
 import { Box, useTheme } from '@mui/material'
-import { DataGrid } from '@mui/x-data-grid'
+import { DataGrid, GridCellParams } from '@mui/x-data-grid'
 import React from 'react'
 
 
@@ -22,7 +22,7 @@ const Row3 = () => {
       field: 'expense',
       headerName: 'Expense',
       flex: 0.5,
-      renderCell: (params) => `$${params.value}`
+      renderCell: (params: GridCellParams) => `$${params.value}`
     },
   ]
 
