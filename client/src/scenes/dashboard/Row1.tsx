@@ -35,6 +35,19 @@ const Row1 = (props: Props) => {
     );
   }, [data]);
 
+  const revenueProfit = useMemo(() => {
+    return (
+      data &&
+      data[0].monthlyData.map(({ month, revenue, expenses }) => {
+        return {
+          name: month.substring(0, 3),
+          revenue: revenue,
+          profit: revenue - expenses,
+        };
+      })
+    );
+  }, [data]);
+
   return (
     <>
       <DashboardBox gridArea="a">
