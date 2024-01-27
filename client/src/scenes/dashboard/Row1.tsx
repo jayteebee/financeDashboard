@@ -6,6 +6,7 @@ import React, { useMemo } from "react";
 import {
   Area,
   AreaChart,
+  Line,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -109,7 +110,88 @@ const Row1 = (props: Props) => {
         </ResponsiveContainer>
       </DashboardBox>
 
-      <DashboardBox gridArea="b"></DashboardBox>
+      <DashboardBox gridArea="b">
+      <BoxHeader
+        title="Revenue and Expenses"
+        subtitle="Top line represents revenue, bottom line represents expenses"
+        sideText="+4%"
+        />
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart
+            width={500}
+            height={400}
+            data={revenueExpenses}
+            margin={{
+              top: 15,
+              right: 25,
+              left: -10,
+              bottom: 60,
+            }}
+          >
+            <defs>
+              <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+                <stop
+                  offset="5%"
+                  stopColor={palette.primary[300]}
+                  stopOpacity={0.5}
+                />
+                <stop
+                  offset="95%"
+                  stopColor={palette.primary.main}
+                  stopOpacity={0}
+                />
+              </linearGradient>
+              <linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
+                <stop
+                  offset="5%"
+                  stopColor={palette.primary[300]}
+                  stopOpacity={0.5}
+                />
+                <stop
+                  offset="95%"
+                  stopColor={palette.primary.main}
+                  stopOpacity={0}
+                />
+              </linearGradient>
+            </defs>
+            <XAxis
+              dataKey="name"
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+            />
+            <YAxis
+            yAxisId="left"
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+              axisLine={false}
+            />
+                        <YAxis
+            yAxisId="right"
+            orientation="right"
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+              axisLine={false}
+            />
+            <Tooltip />
+            <Line
+              type="monotone"
+              dataKey="revenue"
+              dot={true}
+              stroke={palette.primary.main}
+              fillOpacity={1}
+              fill="url(#colorRevenue)"
+            />
+            <Line
+              type="monotone"
+              dataKey="expenses"
+              dot={true}
+              stroke={palette.primary.main}
+              fillOpacity={1}
+              fill="url(#colorExpenses)"
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      </DashboardBox>
       <DashboardBox gridArea="c"></DashboardBox>
     </>
   );
