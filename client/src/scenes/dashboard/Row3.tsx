@@ -16,6 +16,7 @@ const Row3 = () => {
   const { data: productData } = useGetProductsQuery();
   const { data: transactionData } = useGetTransactionsQuery();
   const { palette } = useTheme();
+  const pieColors = [palette.primary[800], palette.primary[500]];
 
 const pieChartData = useMemo(() => {
   if (kpiData) {
