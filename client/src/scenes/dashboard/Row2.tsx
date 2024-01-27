@@ -129,7 +129,10 @@ const Row2 = () => {
               Target Sales
             </Typography>
             <Typography variant="h3" color={palette.primary[300]} m="0.3rem 0" >
-
+              83
+            </Typography>
+            <Typography variant="h6">
+              Finance goals of the Campaign 
             </Typography>
       </Box>
       </FlexBetween>
