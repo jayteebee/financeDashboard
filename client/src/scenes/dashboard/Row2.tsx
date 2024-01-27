@@ -2,8 +2,8 @@ import BoxHeader from '@/components/BoxHeader'
 import DashboardBox from '@/components/DashboardBox'
 import { useGetProductsQuery } from '@/state/api'
 import { useTheme } from '@mui/material'
-import React from 'react'
-import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts'
+import React, { useMemo } from 'react'
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts'
 
 type Props = {}
 
@@ -11,6 +11,17 @@ const Row2 = (props: Props) => {
   const {data} = useGetProductsQuery()
   const { palette } = useTheme();
 
+  const operationalExpenses = useMemo(() => {
+    return (
+      data &&
+      data[0].monthlyData.map(({ month, revenue }) => {
+        return {
+          name: month.substring(0, 3),
+          revenue: revenue,
+        };
+      })
+    );
+  }, [data]);
 
   return (
     <>
@@ -21,9 +32,7 @@ const Row2 = (props: Props) => {
         />
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
-            width={500}
-            height={400}
-            data={revenueProfit}
+            data={operationalExpenses}
             margin={{
               top: 20,
               right: 0,
