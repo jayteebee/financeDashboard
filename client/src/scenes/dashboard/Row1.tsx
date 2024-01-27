@@ -6,6 +6,7 @@ import React, { useMemo } from "react";
 import {
   Area,
   AreaChart,
+  CartesianGrid,
   Line,
   ResponsiveContainer,
   Tooltip,
@@ -128,7 +129,7 @@ const Row1 = (props: Props) => {
               bottom: 60,
             }}
           >
-
+            <CartesianGrid vertical={false} stroke={palette.grey[800]} />
             <XAxis
               dataKey="name"
               tickLine={false}
@@ -149,12 +150,7 @@ const Row1 = (props: Props) => {
             />
             <Tooltip />
             <Line
-              type="monotone"
-              dataKey="revenue"
-              dot={true}
-              stroke={palette.primary.main}
-              fillOpacity={1}
-              fill="url(#colorRevenue)"
+              yAxisId="left"
             />
             <Line
               type="monotone"
