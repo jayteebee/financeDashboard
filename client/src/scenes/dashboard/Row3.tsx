@@ -53,7 +53,7 @@ const Row3 = () => {
       field: 'productIds',
       headerName: 'Count',
       flex: 0.1,
-      renderCell: (params: GridCellParams) => params.value.length
+      renderCell: (params: GridCellParams) => (params.value as Array<string>).length
     },
   ]
 
