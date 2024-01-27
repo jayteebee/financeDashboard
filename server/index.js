@@ -23,6 +23,7 @@ app.use(cors())
 
 // Routes
 app.use("/kpi", kpiroutes)
+app.use("/product", productRoutes)
 
 // MONGOOSE SETUP
 
