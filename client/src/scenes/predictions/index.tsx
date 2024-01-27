@@ -1,108 +1,104 @@
-import DashboardBox from '@/components/DashboardBox'
-import FlexBetween from '@/components/FlexBetween'
-import { useGetKpisQuery } from '@/state/api'
-import { Box, Button, Typography, useTheme } from '@mui/material'
-import React, { useState } from 'react'
-import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip, Label } from 'recharts'
+import DashboardBox from "@/components/DashboardBox";
+import FlexBetween from "@/components/FlexBetween";
+import { useGetKpisQuery } from "@/state/api";
+import { Box, Button, Typography, useTheme } from "@mui/material";
+import React, { useState } from "react";
+import {
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Label,
+} from "recharts";
 
-type Props = {}
+type Props = {};
 
 const Predictions = (props: Props) => {
-    const {palette} = useTheme()
-    const [isPredictions, setIsPredictions] = useState(false)
-    const {data: kpiData} = useGetKpisQuery();
-
+  const { palette } = useTheme();
+  const [isPredictions, setIsPredictions] = useState(false);
+  const { data: kpiData } = useGetKpisQuery();
 
   return (
-    <DashboardBox
-    width="100%"
-    height="100%"
-    p="1rem"
-    overflow="hidden"
-    >
-        <FlexBetween m="1rem 2.5rem" gap="1rem" >
-            <Box>
-                <Typography variant="h3">Revenue and Predictions</Typography>
-                <Typography variant="h6">Charter Revenue and Predicted Revenue based on a liner regression model</Typography>
-            </Box>
-            <Button 
-            onClick={() => setIsPredictions(!isPredictions)}
-            sx={{
-                color: palette.grey[900],
-                bgcolor: palette.grey[700],
-                boxShadow: "0.1rem 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.4)",
-            }}
-            >
-                Show Predicted Revenue for Next Year
-            </Button>
-        </FlexBetween>
+    <DashboardBox width="100%" height="100%" p="1rem" overflow="hidden">
+      <FlexBetween m="1rem 2.5rem" gap="1rem">
+        <Box>
+          <Typography variant="h3">Revenue and Predictions</Typography>
+          <Typography variant="h6">
+            Charter Revenue and Predicted Revenue based on a liner regression
+            model
+          </Typography>
+        </Box>
+        <Button
+          onClick={() => setIsPredictions(!isPredictions)}
+          sx={{
+            color: palette.grey[900],
+            bgcolor: palette.grey[700],
+            boxShadow: "0.1rem 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.4)",
+          }}
+        >
+          Show Predicted Revenue for Next Year
+        </Button>
+      </FlexBetween>
 
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            data={formattedData}
-            margin={{
-              top: 20,
-              right: 75,
-              left: 20,
-              bottom: 80,
-            }}
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart
+          data={formattedData}
+          margin={{
+            top: 20,
+            right: 75,
+            left: 20,
+            bottom: 80,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" stroke={palette.grey[800]} />
+          <XAxis dataKey="name" tickLine={false} style={{ fontSize: "10px" }}>
+            <Label value="Month" offset={-5} position="insideBottom" />
+          </XAxis>
+          <YAxis
+            domain={[12000, 26000]}
+            tickLine={false}
+            style={{ fontSize: "10px" }}
+            axisLine={{ strokeWidth: "0" }}
+            tickFormatter={(v) => `$${v}`}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke={palette.grey[800]} />
-            <XAxis
-              dataKey="name"
-              tickLine={false}
-              style={{ fontSize: "10px" }}
-            >
-                <Label
-                    value="Month"
-                    offset={-5}
-                    position="insideBottom"
-                />
-            </XAxis>
-            <YAxis
-            domain={[12000,26000]}
-              tickLine={false}
-              style={{ fontSize: "10px" }}
-              axisLine={{strokeWidth: "0"}}
-              tickFormatter={(v) => `$${v}`}
-            >
-                <Label
-                    value="Revenue in USD"
-                    angle={-90}
-                    position="insideLeft"
-                    offset={-5}
-                />
-            </YAxis>
-
-            <Tooltip />
-            <Legend
-             verticalAlign='top'
+            <Label
+              value="Revenue in USD"
+              angle={-90}
+              position="insideLeft"
+              offset={-5}
             />
+          </YAxis>
+
+          <Tooltip />
+          <Legend verticalAlign="top" />
+          <Line
+            type="monotone"
+            dataKey="Actual Revenue"
+            stroke={palette.primary.main}
+            strokeWidth={0}
+            dot={{ strokeWidth: 5 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="Regression Line"
+            stroke="#8884d8"
+            dot={false}
+          />
+          {isPredictions && (
             <Line
               type="monotone"
-              dataKey="Actual Revenue"
-              stroke={palette.primary.main}
-              strokeWidth={0}
-              dot={{strokeWidth: 5}}
+              dataKey="Predicted Revenue"
+              stroke={palette.secondary[500]}
             />
-            <Line
-              type="monotone"
-              dataKey="Regression Line"
-              stroke="#8884d8"
-              dot={false}
-            />
-            {isPredictions && (
-                            <Line
-                            type="monotone"
-                            dataKey="Predicted Revenue"
-                            stroke={palette.secondary[500]}
-                          />
-            )}
-          </LineChart>
-        </ResponsiveContainer>
-
+          )}
+        </LineChart>
+      </ResponsiveContainer>
     </DashboardBox>
-  )
-}
+  );
+};
 
-export default Predictions
+export default Predictions;
