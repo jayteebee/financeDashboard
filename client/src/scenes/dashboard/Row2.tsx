@@ -8,18 +8,19 @@ import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tool
 type Props = {}
 
 const Row2 = (props: Props) => {
-  const {data} = useGetProductsQuery()
-  const {data} = useGetKpisQuery()
+  const {data: productData} = useGetProductsQuery()
+  const {data: operationalData} = useGetKpisQuery()
 
   const { palette } = useTheme();
 
   const operationalExpenses = useMemo(() => {
     return (
-      data &&
-      data[0].monthlyData.map(({ month, revenue }) => {
+      operationalData &&
+      operationalData[0].monthlyData.map(({ month, revenue, expenses }) => {
         return {
           name: month.substring(0, 3),
           revenue: revenue,
+          expenses: expenses,
         };
       })
     );
