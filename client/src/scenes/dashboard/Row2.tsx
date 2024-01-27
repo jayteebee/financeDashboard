@@ -16,11 +16,12 @@ const Row2 = (props: Props) => {
   const operationalExpenses = useMemo(() => {
     return (
       operationalData &&
-      operationalData[0].monthlyData.map(({ month, revenue, expenses }) => {
+      operationalData[0].monthlyData.map(({ month, operationalExpenses, nonOperationalExpenses }) => {
         return {
           name: month.substring(0, 3),
-          revenue: revenue,
-          expenses: expenses,
+          "Operational Expenses": operationalExpenses,
+          "Non Operational Expenses": nonOperationalExpenses,
+
         };
       })
     );
