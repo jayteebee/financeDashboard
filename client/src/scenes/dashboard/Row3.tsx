@@ -13,6 +13,13 @@ const Row3 = (props: Props) => {
   const {data: transactionData} = useGetTransactionsQuery()
   const { palette } = useTheme();
 
+  const productColumns = [
+    { 
+      field: '_id',
+      headerName: 'id',
+      flex: 1
+    },
+  ]
 
   return (
     <>
