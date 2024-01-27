@@ -17,6 +17,7 @@ import {
   Cell,
   ScatterChart,
   Scatter,
+  ZAxis,
 } from "recharts";
 
 const pieData = [
@@ -176,7 +177,11 @@ const Row2 = () => {
               style={{ fontSize: "10px" }}
               tickFormatter={(v) => `$${v}`}
             />
-            <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+            <ZAxis
+            type="number"
+            range={[20]}
+            />
+            <Tooltip formatter={(v) => `$${v}`} />
             <Scatter name="A school" data={data} fill="#8884d8" />
           </ScatterChart>
         </ResponsiveContainer>
