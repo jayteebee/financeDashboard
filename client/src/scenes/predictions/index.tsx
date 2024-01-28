@@ -17,9 +17,7 @@ import {
 import regression, {DataPoint} from "regression"
 
 
-type Props = {};
-
-const Predictions = (props: Props) => {
+const Predictions = () => {
   const { palette } = useTheme();
   const [isPredictions, setIsPredictions] = useState(false);
   const { data: kpiData } = useGetKpisQuery();
@@ -114,7 +112,7 @@ const Predictions = (props: Props) => {
           />
           {isPredictions && (
             <Line
-              type="monotone"
+            strokeDasharray="5 5"
               dataKey="Predicted Revenue"
               stroke={palette.secondary[500]}
             />
